@@ -1,0 +1,15 @@
+{% extends "baby_logs/base.html" %}
+{% block page_header %}
+  <h1>Journal</h1>
+{% endblock page_header %}
+
+{% block content %}
+  <div class="list-group">
+    {% for topic in topics %}
+      <a class="list-group-item list-group-item-action" href="{% url 'baby_logs:topic' topic.id %}">{{ topic }}</a>
+    {% empty %}
+    <h3>No topics have been added yet</h3>
+    {% endfor %}
+  </div>
+  <a class="btn btn-primary mt-2" href="{% url 'baby_logs:new_topic' %}">Add new event</a>
+{% endblock content %}

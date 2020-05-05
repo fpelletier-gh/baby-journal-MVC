@@ -1,0 +1,10 @@
+{% extends "baby_logs/base.html" %} {% block content %}
+<h3>Add a new topic:</h3>
+
+<form action="{% url 'baby_logs:new_topic' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button name="submit">Add topic</button>
+</form>
+
+{% endblock content %}
