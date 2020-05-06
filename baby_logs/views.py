@@ -57,6 +57,17 @@ def new_topic(request):
 
 
 @login_required
+def delete_topic(request, topic_id):
+    """Delete a topic"""
+    topic = Topic.objects.get(id=topic_id)
+
+    check_topic_owner(request, topic)
+    topic.delete()
+
+    return render(request, "baby_logs/topics.html")
+
+
+@login_required
 def new_entry(request, topic_id):
     """Add new topic"""
     topic = Topic.objects.get(id=topic_id)

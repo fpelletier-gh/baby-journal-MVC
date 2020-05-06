@@ -6,7 +6,14 @@
 {% block content %}
   <div class="list-group">
     {% for topic in topics %}
-      <a class="list-group-item list-group-item-action" href="{% url 'baby_logs:topic' topic.id %}">{{ topic }}</a>
+    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+      <a class="list-group-item-action" href="{% url 'baby_logs:topic' topic.id %}">{{ topic }}</a>
+      <form action="{% url "baby_logs:delete_topic" topic.id %}" method="post">
+        {% csrf_token %}
+
+        <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this event and all of it\'s entries?');">Delete</button>
+      </form>
+    </div>
     {% empty %}
     <h3>No topics have been added yet</h3>
     {% endfor %}
