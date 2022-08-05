@@ -2,12 +2,12 @@
 {% load bootstrap4 %}
 
 {% block page_header %}
-  <h2><a class="text-decoration-none" href="{% url 'baby_logs:topic' topic.id %}">{{ topic }}</a></h2>
+  <h2><a class="text-decoration-none" href="{% url 'baby_logs:baby' baby.id %}">{{ baby }}</a></h2>
 {% endblock page_header %}
 
 {% block content %}
-  <h5>Add a new entry:</h5>
-  <form class="form" action="{% url 'baby_logs:new_entry' topic.id %}" method="post">
+  <h5>Add a new post:</h5>
+  <form class="form" action="{% url 'baby_logs:new_post' baby.id %}" method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}

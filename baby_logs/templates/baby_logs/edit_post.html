@@ -2,12 +2,12 @@
 {% load bootstrap4 %}
 
 {% block page_header %}
-  <h3><a href="{% url 'baby_logs:topic' topic.id %}">{{ topic }}</a></h3>
+  <h3><a href="{% url 'baby_logs:baby' baby.id %}">{{ baby }}</a></h3>
 {% endblock page_header %}
 
 {% block content %}
-  <h5>Edit entry:</h5>
-  <form class="form" action="{% url 'baby_logs:edit_entry' entry.id %}" method="post">
+  <h5>Edit post:</h5>
+  <form class="form" action="{% url 'baby_logs:edit_post' post.id %}" method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}

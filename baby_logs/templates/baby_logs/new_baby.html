@@ -6,12 +6,12 @@
 {% endblock page_header %}
 
 {% block content %}
-<h5>Add a new event:</h5>
-<form action="{% url 'baby_logs:new_topic' %}" method="post">
+<h5>Add a new baby:</h5>
+<form action="{% url 'baby_logs:new_baby' %}" method="post">
   {% csrf_token %}
   {% bootstrap_form form %}
   {% buttons %}
-  <button name="submit" class="btn btn-primary">Add topic</button>
+  <button name="submit" class="btn btn-primary">Add baby</button>
   {% endbuttons %}
 </form>
 

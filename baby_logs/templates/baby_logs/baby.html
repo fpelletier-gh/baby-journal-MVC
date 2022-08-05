@@ -1,0 +1,22 @@
+{% extends "baby_logs/base.html" %}
+
+{% block page_header %}
+  <h2 class="text-center">{{ baby }}</h2>
+{% endblock page_header %}
+
+{% block content %}
+    <a class="btn btn-primary mb-3" href="{% url 'baby_logs:new_post' baby.id %}">Add new post</a>
+    {% for post in entries %}
+      <div class="card mb-3">
+        <h4 class="card-header">
+          {{ post.date_added|date:'M d, Y H:i' }}
+          <small><a href="{% url 'baby_logs:edit_post' post.id %}">edit post</a></small>
+        </h4>
+      <div class="card-body">
+        {{ post.text|linebreaks }}
+      </div>
+      </div>
+    {% empty %}
+      <p>There are no entries for this baby yet.</p>
+    {% endfor %}
+{% endblock content %}

@@ -2,20 +2,20 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Topic
-from .models import Entry
+from .models import Baby
+from .models import Post
 
 
-class TopicForm(forms.ModelForm):
+class BabyForm(forms.ModelForm):
     class Meta:
-        model = Topic
+        model = Baby
         fields = ["text"]
         labels = {"text": ""}
 
 
-class EntryForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
-        model = Entry
+        model = Post
         fields = ["text"]
         labels = {"text": ""}
         widgets = {"text": forms.Textarea(attrs={"cols": 80})}

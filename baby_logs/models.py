@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Topic(models.Model):
-    """A topic for the baby log"""
+class Baby(models.Model):
+    """A baby for the baby log"""
 
     text = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -14,10 +14,10 @@ class Topic(models.Model):
         return self.text
 
 
-class Entry(models.Model):
-    """Something specific learned about a topic."""
+class Post(models.Model):
+    """Something specific learned about a baby."""
 
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    baby = models.ForeignKey(Baby, on_delete=models.CASCADE)
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
 

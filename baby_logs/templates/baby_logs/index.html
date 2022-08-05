@@ -6,7 +6,7 @@
     <p class="lead">Keep a record of all the important events happening while your baby's growing</p>
 
     {% if user.is_authenticated %}
-    <a class="btn btn-lg btn-primary" href="{% url 'baby_logs:topics' %}"
+    <a class="btn btn-lg btn-primary" href="{% url 'baby_logs:babies' %}"
          role="button">Welcome &raquo;</a>
     {% else %}
     <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"

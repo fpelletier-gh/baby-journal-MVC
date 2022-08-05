@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
-from .models import Topic, Entry
-from .forms import TopicForm, EntryForm
+from .models import Baby, Post
+from .forms import BabyForm, PostForm
 
 
-def check_topic_owner(request, topic):
-    # Make sure the topic belongs to the current user.
-    if topic.owner != request.user:
+def check_baby_owner(request, baby):
+    # Make sure the baby belongs to the current user.
+    if baby.owner != request.user:
         raise Http404
 
 
@@ -18,98 +18,98 @@ def index(request):
 
 
 @login_required
-def topics(request):
-    """Topics page for baby_log"""
-    topics = Topic.objects.filter(owner=request.user).order_by("date_added")
-    context = {"topics": topics}
-    return render(request, "baby_logs/topics.html", context)
+def babies(request):
+    """babies page for baby_log"""
+    babies = Baby.objects.filter(owner=request.user).order_by("date_added")
+    context = {"babies": babies}
+    return render(request, "baby_logs/babies.html", context)
 
 
 @login_required
-def topic(request, topic_id):
-    """Single topic page"""
-    topic = Topic.objects.get(id=topic_id)
+def baby(request, baby_id):
+    """Single baby page"""
+    baby = Baby.objects.get(id=baby_id)
 
-    check_topic_owner(request, topic)
+    check_baby_owner(request, baby)
 
-    entries = topic.entry_set.order_by("-date_added")
-    context = {"topic": topic, "entries": entries}
-    return render(request, "baby_logs/topic.html", context)
+    entries = baby.post_set.order_by("-date_added")
+    context = {"baby": baby, "entries": entries}
+    return render(request, "baby_logs/baby.html", context)
 
 
 @login_required
-def new_topic(request):
-    """Add new topic"""
+def new_baby(request):
+    """Add new baby"""
     if request.method != "POST":
         # No data submitted, create a blank form
-        form = TopicForm()
+        form = BabyForm()
     else:
         # POST data submitted, process data
-        form = TopicForm(data=request.POST)
+        form = BabyForm(data=request.POST)
         if form.is_valid():
-            new_topic = form.save(commit=False)
-            new_topic.owner = request.user
-            new_topic.save()
-            return redirect("baby_logs:topics")
+            new_baby = form.save(commit=False)
+            new_baby.owner = request.user
+            new_baby.save()
+            return redirect("baby_logs:babies")
 
     context = {"form": form}
-    return render(request, "baby_logs/new_topic.html", context)
+    return render(request, "baby_logs/new_baby.html", context)
 
 
 @login_required
-def delete_topic(request, topic_id):
-    """Delete a topic"""
-    topic = Topic.objects.get(id=topic_id)
+def delete_baby(request, baby_id):
+    """Delete a baby"""
+    baby = Baby.objects.get(id=baby_id)
 
-    check_topic_owner(request, topic)
-    topic.delete()
+    check_baby_owner(request, baby)
+    baby.delete()
 
-    return render(request, "baby_logs/topics.html")
+    return render(request, "baby_logs/babies.html")
 
 
 @login_required
-def new_entry(request, topic_id):
-    """Add new topic"""
-    topic = Topic.objects.get(id=topic_id)
+def new_post(request, baby_id):
+    """Add new baby"""
+    baby = Baby.objects.get(id=baby_id)
 
-    # Make sure the topic belongs to the current user.
-    check_topic_owner(request, topic)
+    # Make sure the baby belongs to the current user.
+    check_baby_owner(request, baby)
 
     if request.method != "POST":
         # No data submitted, create a blank form
-        form = EntryForm()
+        form = PostForm()
     else:
         # POST data submitted, process data
-        form = EntryForm(data=request.POST)
+        form = PostForm(data=request.POST)
         if form.is_valid():
-            new_entry = form.save(commit=False)
-            new_entry.topic = topic
-            new_entry.save()
-            return redirect("baby_logs:topic", topic_id=topic_id)
+            new_post = form.save(commit=False)
+            new_post.baby = baby
+            new_post.save()
+            return redirect("baby_logs:baby", baby_id=baby_id)
 
-    context = {"form": form, "topic": topic}
-    return render(request, "baby_logs/new_entry.html", context)
+    context = {"form": form, "baby": baby}
+    return render(request, "baby_logs/new_post.html", context)
 
 
 @login_required
-def edit_entry(request, entry_id):
-    """Edit a entry"""
-    entry = Entry.objects.get(id=entry_id)
-    print(entry)
-    topic = entry.topic
+def edit_post(request, post_id):
+    """Edit a post"""
+    post = Post.objects.get(id=post_id)
+    print(post)
+    baby = post.baby
 
-    # Make sure the topic belongs to the current user.
-    check_topic_owner(request, topic)
+    # Make sure the baby belongs to the current user.
+    check_baby_owner(request, baby)
 
     if request.method != "POST":
         # No data submitted, create a blank form
-        form = EntryForm(instance=entry)
+        form = PostForm(instance=post)
     else:
         # POST data submitted, process data
-        form = EntryForm(instance=entry, data=request.POST)
+        form = PostForm(instance=post, data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect("baby_logs:topic", topic_id=topic.id)
+            return redirect("baby_logs:baby", baby_id=baby.id)
 
-    context = {"entry": entry, "form": form, "topic": topic}
-    return render(request, "baby_logs/edit_entry.html", context)
+    context = {"post": post, "form": form, "baby": baby}
+    return render(request, "baby_logs/edit_post.html", context)
