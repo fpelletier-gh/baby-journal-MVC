@@ -8,10 +8,18 @@
     <a class="btn btn-primary mb-3" href="{% url 'baby_logs:new_post' baby.id %}">Add new post</a>
     {% for post in entries %}
       <div class="card mb-3">
-        <h4 class="card-header">
-          {{ post.date_added|date:'M d, Y H:i' }}
-          <small><a href="{% url 'baby_logs:edit_post' post.id %}">edit post</a></small>
-        </h4>
+        <div class="card-header">
+          <h4>
+            {{ post.title}}
+          </h4>
+          <div class="d-flex justify-content-between">
+            {{ post.date_of_event|date:'M d, Y H:i' }}
+            <div>
+              <small><a class="p-2" href="{% url 'baby_logs:edit_post' post.id %}">edit</a></small>
+              <small><a onclick="return confirm('Are you sure you want to delete this post?');" href="{% url 'baby_logs:delete_post' post.id %}">delete</a></small>
+            </div>
+          </div>
+        </div>
       <div class="card-body">
         {{ post.text|linebreaks }}
       </div>
