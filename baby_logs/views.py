@@ -32,7 +32,7 @@ def baby(request, baby_id):
 
     check_baby_owner(request, baby)
 
-    entries = baby.post_set.order_by("-date_added")
+    entries = baby.post_set.order_by("-date_of_event")
     context = {"baby": baby, "entries": entries}
     return render(request, "baby_logs/baby.html", context)
 
@@ -113,3 +113,17 @@ def edit_post(request, post_id):
 
     context = {"post": post, "form": form, "baby": baby}
     return render(request, "baby_logs/edit_post.html", context)
+
+
+@login_required
+def delete_post(request, post_id):
+    """Delete a post"""
+    post = Post.objects.get(id=post_id)
+    baby = post.baby
+
+    # Make sure the baby belongs to the current user.
+    check_baby_owner(request, baby)
+
+    post.delete()
+
+    return redirect("baby_logs:baby", baby_id=baby.id)
