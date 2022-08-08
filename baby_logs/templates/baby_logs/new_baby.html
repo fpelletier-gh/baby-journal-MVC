@@ -11,7 +11,10 @@
   {% csrf_token %}
   {% bootstrap_form form %}
   {% buttons %}
-  <button name="submit" class="btn btn-primary">Add baby</button>
+    <div class="nav">
+      <button name="submit" class="btn btn-primary">Add baby</button>
+      <a class="mx-2 p-2 text-decoration-none" href="{% url 'baby_logs:babies' %}">Cancel</button>
+    </div>
   {% endbuttons %}
 </form>
 
