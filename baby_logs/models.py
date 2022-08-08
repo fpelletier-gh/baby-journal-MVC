@@ -26,7 +26,7 @@ class Post(models.Model):
     date_of_event = models.DateTimeField()
 
     class Meta:
-        verbose_name_plural = "entries"
+        verbose_name_plural = "posts"
 
     def __str__(self):
         """Return a string representation of the model."""

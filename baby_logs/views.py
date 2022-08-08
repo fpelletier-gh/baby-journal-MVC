@@ -32,8 +32,8 @@ def baby(request, baby_id):
 
     check_baby_owner(request, baby)
 
-    entries = baby.post_set.order_by("-date_of_event")
-    context = {"baby": baby, "entries": entries}
+    posts = baby.post_set.order_by("-date_of_event")
+    context = {"baby": baby, "posts": posts}
     return render(request, "baby_logs/baby.html", context)
 
 
