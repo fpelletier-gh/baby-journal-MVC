@@ -64,7 +64,7 @@ def delete_baby(request, baby_id):
     check_baby_owner(request, baby)
     baby.delete()
 
-    return render(request, "baby_logs/babies.html")
+    return redirect("baby_logs:babies")
 
 
 @login_required

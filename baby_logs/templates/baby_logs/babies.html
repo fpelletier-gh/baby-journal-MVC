@@ -8,11 +8,7 @@
     {% for baby in babies %}
     <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
       <a class="list-group-item-action" href="{% url 'baby_logs:baby' baby.id %}">{{ baby }}</a>
-      <form action="{% url "baby_logs:delete_baby" baby.id %}" method="post">
-        {% csrf_token %}
-
-        <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this event and all of it\'s entries?');">Delete</button>
-      </form>
+      <small><a onclick="return confirm('Are you sure you want to delete this baby and all of it\'s post?');" href="{% url 'baby_logs:delete_baby' baby.id %}" class="nav-link text-danger">delete</a></small>
     </div>
     {% empty %}
     <h3>No babies have been added yet</h3>
