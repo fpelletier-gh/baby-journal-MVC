@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 
 {% block page_header %}
-  <h2>Register</h2>
+  <h2>Create a new account</h2>
 {% endblock page_header %}
 
 
@@ -12,7 +12,7 @@
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-      <button name="submit" class="btn btn-primary">Register</button>
+      <button name="submit" class="btn btn-primary">Create</button>
     {% endbuttons %}
     <input type="hidden" name="next" value="{% url 'baby_logs:index' %}" />
   </form>
