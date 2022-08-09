@@ -85,7 +85,7 @@ WSGI_APPLICATION = "baby_log.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": env("DB_ENGINE"),
         "NAME": env("DB_NAME"),
         "USER": env("DB_USER"),
         "PASSWORD": env("DB_PASSWORD"),
@@ -136,6 +136,6 @@ STATIC_URL = "/static/"
 # My settings
 LOGIN_URL = "users:login"
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = env("CSRF_COOKIE_SECURE")
+SESSION_COOKIE_SECURE = env("SESSION_COOKIE_SECURE")
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
