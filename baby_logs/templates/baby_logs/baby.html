@@ -1,38 +1,46 @@
 {% extends "baby_logs/base.html" %}
 
 {% block page_header %}
-  <h2 class="text-center">{{ baby }}</h2>
+    <h2 class="text-center">{{ baby }}</h2>
 {% endblock page_header %}
 
 {% block content %}
-    <div class="d-flex justify-content-end">
-      <a class="btn btn-primary my-3" href="{% url 'baby_logs:new_post' baby.id %}">Add new post</a>
-    </div>
+    <div class="text-center pr-2">{{ baby.date_of_birth }}</div>
     {% for post in posts %}
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4>
-            {{ post.title}}
-          </h4>
-          <div class="d-flex justify-content-between">
-            <div class="d-flex nav-item align-items-center">
-            {{ post.date_of_event|date:'M d, Y H:i' }}
-            </div>
-            <div class="nav nav-item">
-              <div class="nav-item">
-                <small><a class="nav-link" href="{% url 'baby_logs:edit_post' post.id %}">edit</a></small>
-              </div>
-              <div class="nav-item">
-                <small><a onclick="return confirm('Are you sure you want to delete this post?');" href="{% url 'baby_logs:delete_post' post.id %}" class="nav-link text-danger">delete</a></small>
-              </div>
-            </div>
-          </div>
+        <div class="text-center mt-4">
+            <a class="btn btn-primary" href="{% url 'baby_logs:new_post' baby.id %}">Add new post</a>
         </div>
-      <div class="card-body">
-        {{ post.text|linebreaks }}
-      </div>
-      </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col col-md-8 col-lg-7">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>
+                            {{ post.title}}
+                        </h4>
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex nav-item align-items-center">
+                                {{ post.date_of_event|date:'M d, Y H:i' }}
+                            </div>
+                            <div class="nav nav-item">
+                                <div class="nav-item">
+                                    <small><a class="nav-link" href="{% url 'baby_logs:edit_post' post.id %}">edit</a></small>
+                                </div>
+                                <div class="nav-item">
+                                    <small><a onclick="return confirm('Are you sure you want to delete this post?');" href="{% url 'baby_logs:delete_post' post.id %}" class="nav-link text-danger">delete</a></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {{ post.text|linebreaks }}
+                    </div>
+                </div>
+            </div>
+        </div>
     {% empty %}
-      <h5 class="d-flex justify-content-center">There are no posts for this baby yet.</h5>
+        <h5 class="text-center pt-4">There are no posts for this baby yet.</h5>
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-primary my-3" href="{% url 'baby_logs:new_post' baby.id %}">Add new post</a>
+        </div>
     {% endfor %}
 {% endblock content %}
