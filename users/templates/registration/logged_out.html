@@ -1,5 +1,6 @@
 {% extends "baby_logs/base.html" %}
 
 {% block content %}
-  <h3>You have been logged out. Thank you for visiting!</h3>
+    <h3 class="text-center py-4">You have been logged out. Thank you for visiting!</h3>
+    <h3 class="text-center"><a class="text-decoration-none" href="{% url 'baby_logs:index' %}">Back to home page</a></h3>
 {% endblock content %}
