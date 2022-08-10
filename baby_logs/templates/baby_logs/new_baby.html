@@ -2,20 +2,25 @@
 {% load bootstrap4 %}
 
 {% block page_header %}
-<h2>Journal</h2>
+    <h2 class="text-center">Journal</h2>
 {% endblock page_header %}
 
 {% block content %}
-<h5>Add a new baby:</h5>
-<form action="{% url 'baby_logs:new_baby' %}" method="post">
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  {% buttons %}
-    <div class="nav">
-      <button name="submit" class="btn btn-primary">Add baby</button>
-      <a class="mx-2 p-2 text-decoration-none" href="{% url 'baby_logs:babies' %}">Cancel</button>
-    </div>
-  {% endbuttons %}
-</form>
-
+    <h5 class="text-center pt-4">Add a new baby:</h5>
+    <form class="container form pt-4" method="post" action="{% url 'baby_logs:new_baby' %}">
+        <div class="row justify-content-center">
+            <div class="col col-md-8 col-lg-6">
+                <div class="d-flex flex-column">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col col-md-8 col-lg-6 d-flex align-items-center justify-content-between">
+                <button name="submit" class="btn btn-primary">Add baby</button>
+                <a class="text-decoration-none" href="{% url 'baby_logs:babies' %}">Cancel</a>
+            </div>
+        </div>
+    </form>
 {% endblock content %}
