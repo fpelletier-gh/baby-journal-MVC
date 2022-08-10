@@ -2,19 +2,25 @@
 {% load bootstrap4 %}
 
 {% block page_header %}
-  <h3><a href="{% url 'baby_logs:baby' baby.id %}">{{ baby }}</a></h3>
+    <h3 class="text-center">{{ baby }}</h3>
 {% endblock page_header %}
 
 {% block content %}
-  <h5>Edit post:</h5>
-  <form class="form" action="{% url 'baby_logs:edit_post' post.id %}" method="post">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-      <div class="nav">
-        <button name="submit" class="btn btn-primary">Save</button>
-        <a class="mx-2 p-2 text-decoration-none" href="{% url 'baby_logs:baby' baby.id %}">Cancel</button>
-      </div>
-    {% endbuttons %}
-  </form>
+    <h5 class="text-center pt-4">Edit post:</h5>
+    <form class="container form pt-4" method="post" action="{% url 'baby_logs:edit_post' post.id %}">
+        <div class="row justify-content-center">
+            <div class="col col-md-8 col-lg-7">
+                <div class="d-flex flex-column">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col col-md-8 col-lg-7 d-flex align-items-center justify-content-between">
+                <button name="submit" class="btn btn-primary">Save</button>
+                <a class="text-decoration-none" href="{% url 'baby_logs:baby' baby.id %}">Cancel</a>
+            </div>
+        </div>
+    </form>
 {% endblock content %}
