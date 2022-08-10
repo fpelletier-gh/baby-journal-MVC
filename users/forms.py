@@ -14,7 +14,6 @@ class UserCreationFormWithEmail(UserCreationForm):
         widget=forms.TextInput(
             attrs={
                 "placeholder": "First Name",
-                "class": "my-4",
             }
         ),
         label="",
@@ -26,7 +25,6 @@ class UserCreationFormWithEmail(UserCreationForm):
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Last Name",
-                "class": "my-4",
             }
         ),
         label="",
@@ -37,7 +35,6 @@ class UserCreationFormWithEmail(UserCreationForm):
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Username",
-                "class": "my-4",
             }
         ),
         label="",
@@ -48,7 +45,6 @@ class UserCreationFormWithEmail(UserCreationForm):
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Email",
-                "class": "my-4",
             },
         ),
         label="",
@@ -60,7 +56,6 @@ class UserCreationFormWithEmail(UserCreationForm):
         widget=forms.PasswordInput(
             attrs={
                 "placeholder": "Password",
-                "class": "my-4",
             }
         ),
         label="",
@@ -72,7 +67,6 @@ class UserCreationFormWithEmail(UserCreationForm):
         widget=forms.PasswordInput(
             attrs={
                 "placeholder": "Confirm Password",
-                "class": "my-4",
             }
         ),
         label="",
@@ -100,7 +94,6 @@ class LoginForm(AuthenticationForm):
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Username",
-                "class": "my-4",
             }
         ),
         label="",
@@ -111,7 +104,6 @@ class LoginForm(AuthenticationForm):
         widget=forms.PasswordInput(
             attrs={
                 "placeholder": "Password",
-                "class": "my-4",
             }
         ),
         label="",
