@@ -2,26 +2,35 @@
 {% load bootstrap4 %}
 
 {% block page_header %}
-  <h2>Log in to your account</h2>
+    <h2 class="text-center">Log in to your account</h2>
 {% endblock page_header %}
 
 {% block content %}
-  {% if messages %}
-    {% for message in messages %}
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    {% endfor %}
-  {% endif %}
-  <form method="post" action="{% url 'users:login' %}" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-      <button name="submit" class="btn btn-primary">Log in</button>
-    {% endbuttons %}
-    <input type="hidden" name="next" value="{% url 'baby_logs:index' %}" />
-  </form>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form class="container form pt-4" method="post" action="{% url 'users:login' %}">
+        <div class="row justify-content-center">
+            <div class="col col-md-8 col-lg-6">
+                <div class="d-flex flex-column">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col col-md-8 col-lg-6 d-flex align-items-center justify-content-between">
+                <button name="submit" class="btn btn-primary">Log in</button>
+                <a class="text-decoration-none" href="{% url 'baby_logs:index' %}">Cancel</a>
+                <input type="hidden" name="next" value="{% url 'baby_logs:index' %}" />
+            </div>
+        </div>
+    </form>
 {% endblock content %}
