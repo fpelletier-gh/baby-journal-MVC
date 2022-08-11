@@ -1,5 +1,15 @@
 {% extends "baby_logs/base.html" %}
 {% block page_header %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
     <div class="jumbotron">
         <h1 class="display-3">Track your baby moments</h1>
         <p class="lead">Keep a record of all the important events happening while your baby's growing</p>

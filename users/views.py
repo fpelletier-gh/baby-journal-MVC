@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import logout
 from django.contrib import messages
 from .forms import UserCreationFormWithEmail
 
@@ -21,3 +22,10 @@ def register(request):
     # Display a blank or invalid form.
     context = {"form": form}
     return render(request, "registration/register.html", context)
+
+
+def logout_request(request):
+    """Logout a user and redirect to home page"""
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect("baby_logs:index")
