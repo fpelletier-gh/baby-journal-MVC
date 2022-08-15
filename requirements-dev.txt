@@ -1,0 +1,9 @@
+django ~= 4.1
+django-bootstrap4
+django-environ
+black
+coverage
+django-stubs
+djhtml
+pylint
+pylint-django
