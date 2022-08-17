@@ -30,7 +30,4 @@ class Post(models.Model):
 
     def __str__(self):
         """Return a string representation of the model."""
-        if len(self.text) <= 50:
-            return f"{self.text}"
-        else:
-            return f"{self.text[:50]}..."
+        return f"{self.title}"
