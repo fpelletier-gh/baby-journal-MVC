@@ -7,3 +7,4 @@ django-stubs
 djhtml
 pylint
 pylint-django
+pytest-django
