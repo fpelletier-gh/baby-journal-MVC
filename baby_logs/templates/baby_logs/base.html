@@ -26,7 +26,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}
-                        <li class="d-sm-none d-md-block nav-item pr-3"><span class="navbar-text">Hi, {{ user.username }}.</span></li>
+                        <li class="d-none d-md-block nav-item pr-3"><span class="navbar-text">Hi, {{ user.username }}.</span></li>
                         <li><a class="nav-link" href="{% url 'users:logout' %}">Log out</a></li>
                     {% else %}
                         <li class="nav-item pr-3"><a class="nav-link" href="{% url 'users:login' %}">Log in</a></li>
