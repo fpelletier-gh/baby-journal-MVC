@@ -5,11 +5,11 @@
 {% endblock page_header %}
 
 {% block content %}
-    <div class="text-center pr-2">{{ baby.date_of_birth }}</div>
+    <div class="text-center pb-3">{{ baby.date_of_birth }}</div>
+    <div class="text-center pb-2 pt-4">
+        <a class="btn btn-primary" href="{% url 'baby_logs:new_post' baby.id %}">Add new post</a>
+    </div>
     {% for post in posts %}
-        <div class="text-center mt-4">
-            <a class="btn btn-primary" href="{% url 'baby_logs:new_post' baby.id %}">Add new post</a>
-        </div>
         <div class="row justify-content-center mt-4">
             <div class="col col-md-8 col-lg-7">
                 <div class="card mb-4">
