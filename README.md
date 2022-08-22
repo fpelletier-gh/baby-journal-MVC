@@ -6,7 +6,7 @@ A simple app to create posts for events happening to your babies as they are gro
 
 ## Installation
 
-#### Setup for local development:
+### Setup for local development:
 
 Clone the repository:
 
