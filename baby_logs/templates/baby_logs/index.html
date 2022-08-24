@@ -10,9 +10,10 @@
             </div>
         {% endfor %}
     {% endif %}
-    <div class="jumbotron">
+    {% load static %}
+    <div class="jumbotron" style="background: url({% static "baby-journal-jumbotron.jpg" %}) no-repeat center/60%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-color: transparent;">
         <h1 class="display-3">Track your baby moments</h1>
-        <p class="lead">Keep a record of all the important events happening while your baby's growing</p>
+        <p class="lead"><H5>Keep a record of all the important events happening while your baby's growing</H5></p>
         {% if user.is_authenticated %}
             <a class="btn btn-lg btn-primary" href="{% url 'baby_logs:babies' %}"
                 role="button">Welcome &raquo;</a>
@@ -23,7 +24,7 @@
                         role="button">Sign in &raquo;</a>
                 </div>
                 <div>
-                    <a class="text-decoration-none" href="{% url 'users:register' %}"
+                    <a class="text-decoration-none font-weight-bold" href="{% url 'users:register' %}"
                         role="button">Create an account</a>
                 </div>
             </div>
