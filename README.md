@@ -1,8 +1,8 @@
 # Baby journal
 
-A simple app to create posts for events happening to your babies as they are growing.
+A MVC application to create posts for events happening to your babies as they are growing.
 
-The goal of this project was to learn the MVC pattern using Django, Postgresql, Bootstrap 4 and deploy it on a self manage linux server.
+The goal of this project was to build an application with the MVC pattern using Django, Postgresql, Bootstrap 4 and deploy it on a self manage linux server.
 
 [Live preview](https://babyjournal.francispelletier.ca)
 
